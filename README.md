@@ -1,7 +1,8 @@
 ### CIKM AnalytiCup 2017 -- Lazada Product Title Quality Challenge
-#### the explanation that how to run our source code
-#### team name:AVC2
-#### participants name: Hong Diao WEN
+#### The explanation that how to run our source code
+#### Team name:AVC2
+#### Participants name: Hong Diao WEN
+#### Ranking: consiseness:1st,overall:3rd
 
 ##### 1.for checking submission files:
 locate at CIKM2017_Analyticup_submit folder   
@@ -105,4 +106,4 @@ clarity_test_mlp_3211.predict
 clarity_test.predict    
 conciseness_test.predict    
 
-(9) open data/ensemble,select and select clarity_test.predict and conciseness_test.predict to a blank folder,then zip and summit them to test engine.   
+(9) open data/ensemble,select and move clarity_test.predict and conciseness_test.predict to a blank folder,then zip and summit them to test engine.   
