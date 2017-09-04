@@ -33,9 +33,10 @@ clarity_test_mlp_3211.predict
 clarity_test.predict    
 conciseness_test.predict    
 
+alternate for (1)->(4) steps:sh ./checking_models.bat   
 (5) open data/ensemble,select and select clarity_test.predict and conciseness_test.predict to a blank folder,then zip and summit them to test engine.   
 
-Note: the random seed have been changed so the conciseness results may shift around the submission online.
+Note: the random seed have been changed so the conciseness results may shift around the submission online.    
 ##### 3.for checking all:
 (1) install python packages.    
 
@@ -95,7 +96,7 @@ clarity_test_lgb.predict
 conciseness_test_xgb.predict    
 conciseness_test_xgb.predict    
 
-(7) run model_rnn.py, mlp.py and mlp_clarity.py under model folder respectively, this would generate following files in data/ensemble folder    
+(7) open model_rnn.py,set re_generate = True,then run model_rnn.py, mlp.py and mlp_clarity.py under model folder respectively, this would generate following files in data/ensemble folder    
 
 conciseness_test_lstm.predict      
 conciseness_test_mlp_3211.predict   
@@ -107,3 +108,13 @@ clarity_test.predict
 conciseness_test.predict    
 
 (9) open data/ensemble,select and select clarity_test.predict and conciseness_test.predict to a blank folder,then zip and summit them to test engine.   
+
+alternate for above steps:       
+（１）turn all re_generate = True in:   
+feature_generation.py   
+model_stage1.py   
+model_stage2.py  
+model_rnn.py  
+
+(2）sh ./checking_all.bat
+
