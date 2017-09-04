@@ -1,11 +1,10 @@
 ### CIKM AnalytiCup 2017 -- Lazada Product Title Quality Challenge
-#### The explanation that how to run our source code
-#### Team name:AVC2
-#### Participants name: Hong Diao WEN
-#### Ranking: consiseness:1st,overall:3rd
+#### the explanation that how to run our source code
+#### team name:AVC2
+#### participants name: Hong Diao WEN
 
 ##### 1.for checking submission files:
-locate at CIKM2017_Analyticup_submit folder   
+locate at CIKM2017_Analyticup folder   
 the 10th submission of us is final_results under results folder   
 ##### 2.for checking  models with generated features:
 (1) install python packages.
@@ -13,7 +12,7 @@ the 10th submission of us is final_results under results folder
 pandas    
 numpy   
 scipy(v19.0+)   
-sklearn
+sklearn   
 keras   
 
 (2) run model_stage2.py under model folder,this would generate following 4 files in data/ensemble folder   
@@ -36,6 +35,7 @@ conciseness_test.predict
 
 (5) open data/ensemble,select and select clarity_test.predict and conciseness_test.predict to a blank folder,then zip and summit them to test engine.   
 
+Note: the random seed have been changed so the conciseness results may shift around the submission online.
 ##### 3.for checking all:
 (1) install python packages.    
 
@@ -106,4 +106,4 @@ clarity_test_mlp_3211.predict
 clarity_test.predict    
 conciseness_test.predict    
 
-(9) open data/ensemble,select and move clarity_test.predict and conciseness_test.predict to a blank folder,then zip and summit them to test engine.   
+(9) open data/ensemble,select and select clarity_test.predict and conciseness_test.predict to a blank folder,then zip and summit them to test engine.   
