@@ -33,7 +33,8 @@ clarity_test_mlp_3211.predict
 clarity_test.predict    
 conciseness_test.predict    
 
-alternate for (1)->(4) steps:sh ./checking_models.bat   
+alternate for (1)->(4) steps:		
+sh ./checking_models.bat   
 (5) open data/ensemble,select and select clarity_test.predict and conciseness_test.predict to a blank folder,then zip and summit them to test engine.   
 
 Note: the random seed have been changed so the conciseness results may shift around the submission online.    
