@@ -1,7 +1,7 @@
 # CIKM AnalytiCup at 2017
 This project is the 3rd place solution for [Lazada Product Title Quality Challenge](https://competitions.codalab.org/competitions/16652) associated with CIKM AnalytiCup in 2017. The short description article is at this [link](http://www.cikmconference.org/CIKM2017/download/analytiCup/session3/CIKMAnalytiCup2017_LazadaProductTitleQuality_T3.pdf)
 
-## 1.Task Desription
+## 1. Task Desription
 This chanllenge is to help Lazada to score product tile quality automatically. Here, the titile qulity is composed of **Clarity** and **Conciseness** metrics, more precise definitions of them are listed below:
 ### Clarity
 * 1 means within 5 seconds you can understand the title and what the product is. It easy to read. You can quickly figure out what its key attributes are (color, size, model, etc.).
@@ -14,7 +14,7 @@ This chanllenge is to help Lazada to score product tile quality automatically. H
 * The dataset contains title, cat1, cat2, cat3, short descripton, price and country category information. Ecept for price, all of them are in text.Moreover, **Clarity** and **Conciseness** are labelled according to the viewpoint of human being, thus it could be regarded as a text semantic analysis problem.
 * We found that a title that is not **Clarity** is certain to be not **Conciseness**.This insight is crucial for our model.
 
-## 3.Methods
+## 3. Methods
 ### 3.1 Requirements
 * NLTK, Spacy, BeautifulSoup, pyenchant, sklearn, xgboost, lightgbm, keras.
 ### 3.2 Manual Features + Model Stacking
