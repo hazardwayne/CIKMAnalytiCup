@@ -1,5 +1,5 @@
 # CIKM AnalytiCup At 2017
-This project is the 3rd place solution for [Lazada Product Title Quality Challenge](https://competitions.codalab.org/competitions/16652) associated with CIKM AnalytiCup in 2017.
+This project is the 3rd place solution for [Lazada Product Title Quality Challenge](https://competitions.codalab.org/competitions/16652) associated with CIKM AnalytiCup in 2017. The short description article is at this [link](http://www.cikmconference.org/CIKM2017/download/analytiCup/session3/CIKMAnalytiCup2017_LazadaProductTitleQuality_T3.pdf)
 
 ## Task Desription
 This chanllenge is to help Lazada to score product tile quality automatically. Here, the titile qulity is composed of **Clarity** and **Conciseness** metrics, more precise definitions of them are listed below:
