@@ -11,7 +11,7 @@ This chanllenge is to help Lazada to score product tile quality automatically. H
 * 0 means it is too long with many unnecessary words. Or it is too short and it is unsure what the product is.
 
 ## Data Exploration
-* The dataset contains title, cat1, cat2, cat3, short descripton, price and country category information. Ecept for price, all of them are in text.<br>Moreover, **Clarity** and **Conciseness** are labelled according to the viewpoint of human being, thus it could be regarded as a text semantic analysis problem.
+* The dataset contains title, cat1, cat2, cat3, short descripton, price and country category information. Ecept for price, all of them are in text.Moreover, **Clarity** and **Conciseness** are labelled according to the viewpoint of human being, thus it could be regarded as a text semantic analysis problem.
 * We found that a title that is not **Clarity** is certain to be not **Conciseness**.This insight is crucial for our model.
 
 ## Methods
@@ -29,7 +29,7 @@ This chanllenge is to help Lazada to score product tile quality automatically. H
 All the details could be found in *feature_generation.py*.
 #### Metric-based Two-layer Stacking
 ##### Stage1
-* To sense the property between the metrics, we perform metric stacking as our 1st stacking stage. For two metrics, cross validation is carried out by xgb,<br> adaboost, rf and lgb models in different seeds, which generates new features correspondingly. 
+* To sense the property between the metrics, we perform metric stacking as our 1st stacking stage. For two metrics, cross validation is carried out by xgb, adaboost, rf and lgb models in different seeds, which generates new features correspondingly. 
 * At this stage, the features have both categorical and numerical types, so the models are all tree-based.
 
 This is presented in *model_stage1.py*.
