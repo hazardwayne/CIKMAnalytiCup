@@ -42,7 +42,7 @@ Except for xgb and lgb models, parameters are not carefully tuned for other mode
 Pretrained *glove* embedding is took advantage of by LSTM further. In addition, we train embedding vectors from scratch for the categories of product.
 #### Two-layer LSTM
 Word embeddings are fed to a rnn of 2-layer's LSTM to extract features from the whole sequence.
-#### Ensemble MLP
+#### MLP
 First, LSTM features, category embedding features, manual features and metric stacking features are concatenated together, then follows a MLP to ensemble them.
 
 Exact code is in *model_rnn.py* and *model_rnn_clarity.py*.<br>
