@@ -1,123 +1,54 @@
-### CIKM AnalytiCup 2017 -- Lazada Product Title Quality Challenge
-#### the explanation that how to run our source code
-#### team name:AVC2
-#### participants name: Hong Diao WEN
+# CIKM AnalytiCup At 2017
+This project is the 3rd place solution for [Lazada Product Title Quality Challenge](https://competitions.codalab.org/competitions/16652) associated with CIKM AnalytiCup in 2017.
 
-##### 1.for checking submission files:
-locate at CIKM2017_Analyticup folder   
-the 10th submission of us is final_results under results folder   
-##### 2.for checking  models with generated features:
-(1) install python packages.
+## Task Desription
+This chanllenge is to help Lazada to score product tile quality automatically. Here, the titile qulity is composed of **Clarity** and **Conciseness** metrics, more precise definitions of them are listed below:
+### Clarity
+* 1 means within 5 seconds you can understand the title and what the product is. It easy to read. You can quickly figure out what its key attributes are (color, size, model, etc.).
+* 0 means you are not sure what the product is after 5 seconds. it is difficult to read. You will have to read the title more than once.
+### Conciseness
+* 1 means it is short enough to contain all the necessary information.
+* 0 means it is too long with many unnecessary words. Or it is too short and it is unsure what the product is.
 
-pandas    
-numpy   
-scipy(v19.0+)   
-sklearn   
-keras   
+## Data Exploration
+* The dataset contains title, cat1, cat2, cat3, short descripton, price and country category information. Ecept for price, all of them are in text.<br>Moreover, **Clarity** and **Conciseness** are labelled according to the viewpoint of human being, thus it could be regarded as a text semantic analysis problem.
+* We found that a title that is not **Clarity** is certain to be not **Conciseness**.This insight is crucial for our model.
 
-(2) run model_stage2.py under model folder,this would generate following 4 files in data/ensemble folder   
+## Methods
+### Requirements
+* NLTK, Spacy, BeautifulSoup, pyenchant, sklearn, xgboost, lightgbm, keras.
+### Manual Features + Model Stacking
+#### Feature Engineering
+* Entity detection and spellchecking through spacy and pyenchant respectively.
+* Fundamental statistic features, including both char-based and word-based. The number of comma, tag, digit, upper-cased, non-alpha and stop words are calculated.
+* Inspired by the metric definitions, we explore the duplicated words, which is the *magic* feature eventually.
+* Longest common string with length larger than 2 from pairs of words.
+* We find the similar words via wordnet in NLTK.
+* The description is parsed from HTML format first, then performs the similar procedure as the tile does.
 
-clarity_test_xgb.predict    
-clarity_test_lgb.predict    
-conciseness_test_xgb.predict    
-conciseness_test_xgb.predict    
+All the details could be found in *feature_generation.py*.
+#### Metric-based Two-layer Stacking
+##### Stage1
+* To sense the property between the metrics, we perform metric stacking as our 1st stacking stage. For two metrics, cross validation is carried out by xgb,<br> adaboost, rf and lgb models in different seeds, which generates new features correspondingly. 
+* At this stage, the features have both categorical and numerical types, so the models are all tree-based.
 
-(3) run model_rnn.py, mlp.py and mlp_clarity.py under model folder respectively, this would generate following files in data/ensemble folder    
+This is presented in *model_stage1.py*.
+##### Stage2
+* During this stage, we sample numeric features in order to try more model types. Our 2nd-stage stacking is further based on svm, knn, naive bayes and so on.
 
-conciseness_test_lstm.predict      
-conciseness_test_mlp_3211.predict   
-clarity_test_mlp_3211.predict   
+Except for xgb and lgb models, parameters are not carefully tuned for other models. Please look at *model_stage2.py*.
+### Ensemble-LSTM
+#### Embeddings
+* Pretrained *glove* embedding is took advantage of by LSTM further. In addition, we train embedding vectors from scratch for the categories of product.
+#### Two-layer LSTM
+* Word embeddings are fed to a rnn of 2-layer's LSTM to extract features from the whole sequence.
+#### Ensemble MLP
+* First, LSTM features, category embedding features, manual features and metric stacking features are concatenated together, then follows a MLP to ensemble them.
 
-(4) run model_stage3.py under model folder, this would generate following files in data/ensemble
+Exact code is in *model_rnn.py* and *model_rnn_clarity.py*.<br>
+Finally, *model_stage3.py* is weighted over th best xgb, lgb and lstm models.
 
-clarity_test.predict    
-conciseness_test.predict    
 
-alternate for (1)->(4) steps:
-  
-sh ./checking_models.bat   
 
-(5) open data/ensemble,select and select clarity_test.predict and conciseness_test.predict to a blank folder,then zip and summit them to test engine.   
 
-Note: the random seed have been changed so the conciseness results may shift around the submission online.    
-##### 3.for checking all:
-(1) install python packages.    
-
-pandas    
-numpy   
-scipy(v19.0+)   
-spacy   
-enchant   
-beatifulsoup(bs4)   
-sklearn   
-xgboost   
-lightgbm    
-keras   
-nltk    
-
-(2) download models   
-
-nltk:stopwords,wordnet    
-spacy:en_core_web_sm    
-glove word embedding:glove.840B.300d.txt（not neccesary when embedding.npy file is in file_tmp）  
-
-(3) feature generation
-open feature_generation.py, set re_generate = True,then run it, this would
-generate  3 files in data/features    
-
-df_feature.csv    
-sparse_clarity.npz    
-sparse_conciseness.npz    
-
-(4) model_stage1    
-open model_stage1.py, set re_generate = True, then run it, this would
-generate  1 files in data/features   
-
-df_feature_stage1.csv   
-
-(5) open model_stage2.py,set re_generate = True then run it.the following step is same with 2.for checking  models with generated features:
-
-clarity_prob.csv    
-clarity_prob_lgb.csv    
-clarity_ada.csv   
-clarity_knn_b.csv   
-clarity_rf.csv    
-clarity_mlp.csv   
-...   
-conciseness_prob.csv    
-conciseness_prob_lgb.csv    
-conciseness_ada.csv   
-conciseness_knn_b.csv   
-conciseness_rf.csv    
-conciseness_mlp.csv   
-...
-
-(6) run model_stage2.py under model folder,this would generate following 4 files in data/ensemble folder   
-
-clarity_test_xgb.predict    
-clarity_test_lgb.predict    
-conciseness_test_xgb.predict    
-conciseness_test_xgb.predict    
-
-(7) open model_rnn.py,set re_generate = True,then run model_rnn.py, mlp.py and mlp_clarity.py under model folder respectively, this would generate following files in data/ensemble folder    
-
-conciseness_test_lstm.predict      
-conciseness_test_mlp_3211.predict   
-clarity_test_mlp_3211.predict   
-
-(8) run model_stage3.py under model folder, this would generate following files in data/ensemble
-
-clarity_test.predict    
-conciseness_test.predict    
-
-(9) open data/ensemble,select and select clarity_test.predict and conciseness_test.predict to a blank folder,then zip and summit them to test engine.   
-
-alternate for above steps:       
-（１）turn all re_generate = True in:   
-feature_generation.py   
-model_stage1.py   
-model_stage2.py  
-model_rnn.py  
-
-(2）sh ./checking_all.bat
 
