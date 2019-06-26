@@ -1,6 +1,8 @@
 # CIKM AnalytiCup at 2017
 This project is the 3rd place solution for [Lazada Product Title Quality Challenge](https://competitions.codalab.org/competitions/16652) associated with CIKM AnalytiCup in 2017. The short description article is at this [link](http://www.cikmconference.org/CIKM2017/download/analytiCup/session3/CIKMAnalytiCup2017_LazadaProductTitleQuality_T3.pdf)
 
+![alt text](model.PNG)
+
 ## 1. Task Desription
 This chanllenge is to help Lazada to score product tile quality automatically. Here, the titile qulity is composed of **Clarity** and **Conciseness** metrics, more precise definitions of them are listed below:
 ### Clarity
@@ -46,7 +48,7 @@ Word embeddings are fed to a rnn of 2-layer's LSTM to extract features from the 
 First, LSTM features, category embedding features, manual features and metric stacking features are concatenated together, then follows a MLP to ensemble them.
 
 Exact code is in [model_rnn.py](/model/model_rnn.py) and [model_rnn_clarity.py](/model/model_rnn_clarity.py).<br>
-Finally, [model_stage3.py](/model/model_stage3.py)is weighted over th best xgb, lgb and lstm models.
+Finally, [model_stage3.py](/model/model_stage3.py) is weighted over th best xgb, lgb and lstm models.
 
 
 
