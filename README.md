@@ -26,7 +26,7 @@ This chanllenge is to help Lazada to score product tile quality automatically. H
 * We find the similar words via wordnet in NLTK.
 * The description is parsed from HTML format first, then performs the similar procedure as the tile does.
 
-All the details could be found in *feature_generation.py*.
+All the details could be found in [feature_generation.py](/models/feature_generation.py).
 #### Metric-based Two-layer Stacking
 ##### Stage1
 * To sense the property between the metrics, we perform metric stacking as our 1st stacking stage. For two metrics, cross validation is carried out by xgb, adaboost, rf and lgb models in different seeds, which generates new features correspondingly. 
