@@ -38,7 +38,7 @@ This is presented in [model_stage1.py](/model/model_stage1.py).
 ##### Stage2
 * During this stage, we sample numeric features in order to try more model types. Our 2nd-stage stacking is further based on svm, knn, naive bayes and so on.
 
-Except for xgb and lgb models, parameters are not carefully tuned for other models. Please look at *model_stage2.py*.
+Except for xgb and lgb models, parameters are not carefully tuned for other models. Please look at [model_stage2.py](/model/model_stage2.py).
 ### 3.3 Ensemble-LSTM
 #### Embeddings
 Pretrained *glove* embedding is took advantage of by LSTM further. In addition, we train embedding vectors from scratch for the categories of product.
