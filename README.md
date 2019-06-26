@@ -32,7 +32,7 @@ All the details could be found in [feature_generation.py](/model/feature_generat
 * To sense the property between the metrics, we perform metric stacking as our 1st stacking stage. For two metrics, cross validation is carried out by xgb, adaboost, rf and lgb models in different seeds, which generates new features correspondingly. 
 * At this stage, the features have both categorical and numerical types, so the models are all tree-based.
 
-This is presented in *model_stage1.py*.
+This is presented in [model_stage1.py](/model/model_stage1.py).
 ##### Stage2
 * During this stage, we sample numeric features in order to try more model types. Our 2nd-stage stacking is further based on svm, knn, naive bayes and so on.
 
@@ -45,8 +45,8 @@ Word embeddings are fed to a rnn of 2-layer's LSTM to extract features from the 
 #### MLP
 First, LSTM features, category embedding features, manual features and metric stacking features are concatenated together, then follows a MLP to ensemble them.
 
-Exact code is in *model_rnn.py* and *model_rnn_clarity.py*.<br>
-Finally, *model_stage3.py* is weighted over th best xgb, lgb and lstm models.
+Exact code is in [model_rnn.py](/model/model_rnn.py) and [model_rnn_clarity.py](/model/model_rnn_clarity.py).<br>
+Finally, [model_stage3.py](/model/model_stage3.py)is weighted over th best xgb, lgb and lstm models.
 
 
 
