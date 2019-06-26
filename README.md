@@ -1,5 +1,5 @@
 # CIKM AnalytiCup at 2017
-This project is the 3rd place solution for [Lazada Product Title Quality Challenge](https://competitions.codalab.org/competitions/16652) associated with CIKM AnalytiCup in 2017. The short description article is at this [link](http://www.cikmconference.org/CIKM2017/download/analytiCup/session3/CIKMAnalytiCup2017_LazadaProductTitleQuality_T3.pdf)
+This project is the 3rd place solution for [Lazada Product Title Quality Challenge](https://competitions.codalab.org/competitions/16652) associated with CIKM AnalytiCup in 2017. The short description article is at this [link](http://www.cikmconference.org/CIKM2017/download/analytiCup/session3/CIKMAnalytiCup2017_LazadaProductTitleQuality_T3.pdf).
 
 ![alt text](model.PNG)
 
